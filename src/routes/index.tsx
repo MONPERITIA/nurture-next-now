@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, Plus, Clock, AlertCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -24,10 +24,13 @@ function Dashboard() {
       </div>
 
       {/* Ação rápida */}
-      <button className="flex items-center justify-center gap-2 w-full bg-indigo-400 hover:bg-indigo-500 text-tinta-900 font-medium py-3 rounded-lg transition-colors">
+      <Link 
+        to="/nova-pericia"
+        className="flex items-center justify-center gap-2 w-full bg-indigo-400 hover:bg-indigo-500 text-tinta-900 font-medium py-3 rounded-lg transition-colors"
+      >
         <Plus className="w-5 h-5" />
         <span>Nova perícia</span>
-      </button>
+      </Link>
 
       {/* Perícias recentes */}
       <section className="space-y-3">

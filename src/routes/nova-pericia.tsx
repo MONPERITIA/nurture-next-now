@@ -10,7 +10,7 @@ function NovaPericia() {
     <div className="flex flex-col gap-6 pb-24 md:pb-6">
       <header className="flex flex-col gap-1">
         <h1 className="text-3xl font-semibold tracking-tight">Nova Perícia</h1>
-        <p className="text-pergaminho-300 text-sm">Preencha os dados básicos para iniciar o laudo.</p>
+        <p className="text-pergaminho-300 text-sm">Preencha os dados básicos para preparar a perícia.</p>
       </header>
 
       <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 space-y-6">
@@ -34,7 +34,7 @@ function NovaPericia() {
             </label>
             <input 
               type="text" 
-              placeholder="Nomes dos autores, réus, assistentes..."
+              placeholder="Nomes das pessoas envolvidas"
               className="w-full bg-tinta-900 border border-tinta-600 rounded-lg py-2.5 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400"
             />
           </div>
@@ -46,10 +46,9 @@ function NovaPericia() {
             </label>
             <select className="w-full bg-tinta-900 border border-tinta-600 rounded-lg py-2.5 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 appearance-none">
               <option value="">Selecione um modelo...</option>
-              <option value="medica">Perícia Médica</option>
-              <option value="engenharia">Engenharia / Avaliação</option>
-              <option value="grafotecnica">Grafotécnica</option>
-              <option value="contabil">Contábil</option>
+              <option value="estudo-social">Estudo social</option>
+              <option value="psicologico">Laudo psicológico</option>
+              <option value="psicossocial">Laudo psicossocial</option>
             </select>
           </div>
 

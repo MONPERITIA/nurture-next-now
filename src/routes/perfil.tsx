@@ -74,10 +74,10 @@ function Perfil() {
         <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 space-y-4">
           <h2 className="text-lg font-medium flex items-center gap-2 border-b border-tinta-600 pb-2 mb-4">
             <PenTool className="w-4 h-4 text-indigo-400" />
-            Assinatura Digital
+            Assinatura visual cadastrada
           </h2>
           <div className="aspect-video rounded border border-dashed border-tinta-600 flex items-center justify-center bg-tinta-900">
-            <p className="text-xs text-pergaminho-500">Nenhuma assinatura cadastrada</p>
+            <p className="text-xs text-pergaminho-500">Nenhuma assinatura visual cadastrada</p>
           </div>
         </section>
 
