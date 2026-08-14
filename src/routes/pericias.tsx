@@ -10,7 +10,7 @@ function Pericias() {
     <div className="flex flex-col gap-6 pb-24 md:pb-6">
       <header className="flex flex-col gap-1">
         <h1 className="text-3xl font-semibold tracking-tight">Perícias</h1>
-        <p className="text-pergaminho-300 text-sm">Gerencie todos os seus laudos e processos.</p>
+        <p className="text-pergaminho-300 text-sm">Acompanhe e acesse suas perícias.</p>
       </header>
 
       <div className="flex gap-2">

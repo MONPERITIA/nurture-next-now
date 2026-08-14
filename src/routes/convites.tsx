@@ -10,7 +10,7 @@ function Convites() {
     <div className="flex flex-col gap-6 pb-24 md:pb-6">
       <header className="flex flex-col gap-1">
         <h1 className="text-3xl font-semibold tracking-tight">Convites</h1>
-        <p className="text-pergaminho-300 text-sm">Gerencie convites de colaboração e nomeações.</p>
+        <p className="text-pergaminho-300 text-sm">Gerencie convites de parceria vinculados às perícias.</p>
       </header>
 
       <div className="flex border-b border-tinta-600">
