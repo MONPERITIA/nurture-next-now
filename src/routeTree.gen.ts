@@ -14,8 +14,10 @@ import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as ConvitesRouteImport } from './routes/convites'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NovaPericiaRouteImport } from './routes/nova-pericia'
+import { Route as NovaSenhaRouteImport } from './routes/nova-senha'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as PericiasRouteImport } from './routes/pericias'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
 import { Route as PericiasIndexRouteImport } from './routes/pericias/index'
 import { Route as PericiasPericiaIdRouteImport } from './routes/pericias/$periciaId'
 import { Route as PericiasPericiaIdIndexRouteImport } from './routes/pericias/$periciaId/index'
@@ -50,6 +52,11 @@ const NovaPericiaRoute = NovaPericiaRouteImport.update({
   path: '/nova-pericia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NovaSenhaRoute = NovaSenhaRouteImport.update({
+  id: '/nova-senha',
+  path: '/nova-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerfilRoute = PerfilRouteImport.update({
   id: '/perfil',
   path: '/perfil',
@@ -58,6 +65,11 @@ const PerfilRoute = PerfilRouteImport.update({
 const PericiasRoute = PericiasRouteImport.update({
   id: '/pericias',
   path: '/pericias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PericiasIndexRoute = PericiasIndexRouteImport.update({
@@ -109,8 +121,10 @@ export interface FileRoutesByFullPath {
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
+  '/nova-senha': typeof NovaSenhaRoute
   '/perfil': typeof PerfilRoute
   '/pericias': typeof PericiasRouteWithChildren
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
   '/pericias/': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
@@ -126,7 +140,9 @@ export interface FileRoutesByTo {
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
+  '/nova-senha': typeof NovaSenhaRoute
   '/perfil': typeof PerfilRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/pericias': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
   '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
@@ -142,8 +158,10 @@ export interface FileRoutesById {
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
+  '/nova-senha': typeof NovaSenhaRoute
   '/perfil': typeof PerfilRoute
   '/pericias': typeof PericiasRouteWithChildren
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
   '/pericias/': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
@@ -161,8 +179,10 @@ export interface FileRouteTypes {
     | '/convites'
     | '/login'
     | '/nova-pericia'
+    | '/nova-senha'
     | '/perfil'
     | '/pericias'
+    | '/recuperar-senha'
     | '/pericias/$periciaId'
     | '/pericias/'
     | '/pericias/$periciaId/coleta'
@@ -178,7 +198,9 @@ export interface FileRouteTypes {
     | '/convites'
     | '/login'
     | '/nova-pericia'
+    | '/nova-senha'
     | '/perfil'
+    | '/recuperar-senha'
     | '/pericias'
     | '/pericias/$periciaId/coleta'
     | '/pericias/$periciaId/fontes'
@@ -193,8 +215,10 @@ export interface FileRouteTypes {
     | '/convites'
     | '/login'
     | '/nova-pericia'
+    | '/nova-senha'
     | '/perfil'
     | '/pericias'
+    | '/recuperar-senha'
     | '/pericias/$periciaId'
     | '/pericias/'
     | '/pericias/$periciaId/coleta'
@@ -211,8 +235,10 @@ export interface RootRouteChildren {
   ConvitesRoute: typeof ConvitesRoute
   LoginRoute: typeof LoginRoute
   NovaPericiaRoute: typeof NovaPericiaRoute
+  NovaSenhaRoute: typeof NovaSenhaRoute
   PerfilRoute: typeof PerfilRoute
   PericiasRoute: typeof PericiasRouteWithChildren
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NovaPericiaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nova-senha': {
+      id: '/nova-senha'
+      path: '/nova-senha'
+      fullPath: '/nova-senha'
+      preLoaderRoute: typeof NovaSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/perfil': {
       id: '/perfil'
       path: '/perfil'
@@ -264,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/pericias'
       fullPath: '/pericias'
       preLoaderRoute: typeof PericiasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pericias/': {
@@ -366,8 +406,10 @@ const rootRouteChildren: RootRouteChildren = {
   ConvitesRoute: ConvitesRoute,
   LoginRoute: LoginRoute,
   NovaPericiaRoute: NovaPericiaRoute,
+  NovaSenhaRoute: NovaSenhaRoute,
   PerfilRoute: PerfilRoute,
   PericiasRoute: PericiasRouteWithChildren,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
