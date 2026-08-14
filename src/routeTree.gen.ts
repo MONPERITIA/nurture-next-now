@@ -14,6 +14,13 @@ import { Route as ConvitesRouteImport } from './routes/convites'
 import { Route as NovaPericiaRouteImport } from './routes/nova-pericia'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as PericiasRouteImport } from './routes/pericias'
+import { Route as PericiasPericiaIdRouteImport } from './routes/pericias/$periciaId'
+import { Route as PericiasPericiaIdIndexRouteImport } from './routes/pericias/$periciaId/index'
+import { Route as PericiasPericiaIdColetaRouteImport } from './routes/pericias/$periciaId/coleta'
+import { Route as PericiasPericiaIdFontesRouteImport } from './routes/pericias/$periciaId/fontes'
+import { Route as PericiasPericiaIdLaudoRouteImport } from './routes/pericias/$periciaId/laudo'
+import { Route as PericiasPericiaIdPessoasRouteImport } from './routes/pericias/$periciaId/pessoas'
+import { Route as PericiasPericiaIdProcedimentosRouteImport } from './routes/pericias/$periciaId/procedimentos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,20 +47,70 @@ const PericiasRoute = PericiasRouteImport.update({
   path: '/pericias',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PericiasPericiaIdRoute = PericiasPericiaIdRouteImport.update({
+  id: '/$periciaId',
+  path: '/$periciaId',
+  getParentRoute: () => PericiasRoute,
+} as any)
+const PericiasPericiaIdIndexRoute = PericiasPericiaIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PericiasPericiaIdRoute,
+} as any)
+const PericiasPericiaIdColetaRoute = PericiasPericiaIdColetaRouteImport.update({
+  id: '/coleta',
+  path: '/coleta',
+  getParentRoute: () => PericiasPericiaIdRoute,
+} as any)
+const PericiasPericiaIdFontesRoute = PericiasPericiaIdFontesRouteImport.update({
+  id: '/fontes',
+  path: '/fontes',
+  getParentRoute: () => PericiasPericiaIdRoute,
+} as any)
+const PericiasPericiaIdLaudoRoute = PericiasPericiaIdLaudoRouteImport.update({
+  id: '/laudo',
+  path: '/laudo',
+  getParentRoute: () => PericiasPericiaIdRoute,
+} as any)
+const PericiasPericiaIdPessoasRoute =
+  PericiasPericiaIdPessoasRouteImport.update({
+    id: '/pessoas',
+    path: '/pessoas',
+    getParentRoute: () => PericiasPericiaIdRoute,
+  } as any)
+const PericiasPericiaIdProcedimentosRoute =
+  PericiasPericiaIdProcedimentosRouteImport.update({
+    id: '/procedimentos',
+    path: '/procedimentos',
+    getParentRoute: () => PericiasPericiaIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/convites': typeof ConvitesRoute
   '/nova-pericia': typeof NovaPericiaRoute
   '/perfil': typeof PerfilRoute
-  '/pericias': typeof PericiasRoute
+  '/pericias': typeof PericiasRouteWithChildren
+  '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
+  '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
+  '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
+  '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
+  '/pericias/$periciaId/pessoas': typeof PericiasPericiaIdPessoasRoute
+  '/pericias/$periciaId/procedimentos': typeof PericiasPericiaIdProcedimentosRoute
+  '/pericias/$periciaId/': typeof PericiasPericiaIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/convites': typeof ConvitesRoute
   '/nova-pericia': typeof NovaPericiaRoute
   '/perfil': typeof PerfilRoute
-  '/pericias': typeof PericiasRoute
+  '/pericias': typeof PericiasRouteWithChildren
+  '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
+  '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
+  '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
+  '/pericias/$periciaId/pessoas': typeof PericiasPericiaIdPessoasRoute
+  '/pericias/$periciaId/procedimentos': typeof PericiasPericiaIdProcedimentosRoute
+  '/pericias/$periciaId': typeof PericiasPericiaIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,14 +118,57 @@ export interface FileRoutesById {
   '/convites': typeof ConvitesRoute
   '/nova-pericia': typeof NovaPericiaRoute
   '/perfil': typeof PerfilRoute
-  '/pericias': typeof PericiasRoute
+  '/pericias': typeof PericiasRouteWithChildren
+  '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
+  '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
+  '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
+  '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
+  '/pericias/$periciaId/pessoas': typeof PericiasPericiaIdPessoasRoute
+  '/pericias/$periciaId/procedimentos': typeof PericiasPericiaIdProcedimentosRoute
+  '/pericias/$periciaId/': typeof PericiasPericiaIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/convites' | '/nova-pericia' | '/perfil' | '/pericias'
+  fullPaths:
+    | '/'
+    | '/convites'
+    | '/nova-pericia'
+    | '/perfil'
+    | '/pericias'
+    | '/pericias/$periciaId'
+    | '/pericias/$periciaId/coleta'
+    | '/pericias/$periciaId/fontes'
+    | '/pericias/$periciaId/laudo'
+    | '/pericias/$periciaId/pessoas'
+    | '/pericias/$periciaId/procedimentos'
+    | '/pericias/$periciaId/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/convites' | '/nova-pericia' | '/perfil' | '/pericias'
-  id: '__root__' | '/' | '/convites' | '/nova-pericia' | '/perfil' | '/pericias'
+  to:
+    | '/'
+    | '/convites'
+    | '/nova-pericia'
+    | '/perfil'
+    | '/pericias'
+    | '/pericias/$periciaId/coleta'
+    | '/pericias/$periciaId/fontes'
+    | '/pericias/$periciaId/laudo'
+    | '/pericias/$periciaId/pessoas'
+    | '/pericias/$periciaId/procedimentos'
+    | '/pericias/$periciaId'
+  id:
+    | '__root__'
+    | '/'
+    | '/convites'
+    | '/nova-pericia'
+    | '/perfil'
+    | '/pericias'
+    | '/pericias/$periciaId'
+    | '/pericias/$periciaId/coleta'
+    | '/pericias/$periciaId/fontes'
+    | '/pericias/$periciaId/laudo'
+    | '/pericias/$periciaId/pessoas'
+    | '/pericias/$periciaId/procedimentos'
+    | '/pericias/$periciaId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,7 +176,7 @@ export interface RootRouteChildren {
   ConvitesRoute: typeof ConvitesRoute
   NovaPericiaRoute: typeof NovaPericiaRoute
   PerfilRoute: typeof PerfilRoute
-  PericiasRoute: typeof PericiasRoute
+  PericiasRoute: typeof PericiasRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -116,15 +216,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PericiasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pericias/$periciaId': {
+      id: '/pericias/$periciaId'
+      path: '/$periciaId'
+      fullPath: '/pericias/$periciaId'
+      preLoaderRoute: typeof PericiasPericiaIdRouteImport
+      parentRoute: typeof PericiasRoute
+    }
+    '/pericias/$periciaId/': {
+      id: '/pericias/$periciaId/'
+      path: '/'
+      fullPath: '/pericias/$periciaId/'
+      preLoaderRoute: typeof PericiasPericiaIdIndexRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
+    '/pericias/$periciaId/coleta': {
+      id: '/pericias/$periciaId/coleta'
+      path: '/coleta'
+      fullPath: '/pericias/$periciaId/coleta'
+      preLoaderRoute: typeof PericiasPericiaIdColetaRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
+    '/pericias/$periciaId/fontes': {
+      id: '/pericias/$periciaId/fontes'
+      path: '/fontes'
+      fullPath: '/pericias/$periciaId/fontes'
+      preLoaderRoute: typeof PericiasPericiaIdFontesRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
+    '/pericias/$periciaId/laudo': {
+      id: '/pericias/$periciaId/laudo'
+      path: '/laudo'
+      fullPath: '/pericias/$periciaId/laudo'
+      preLoaderRoute: typeof PericiasPericiaIdLaudoRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
+    '/pericias/$periciaId/pessoas': {
+      id: '/pericias/$periciaId/pessoas'
+      path: '/pessoas'
+      fullPath: '/pericias/$periciaId/pessoas'
+      preLoaderRoute: typeof PericiasPericiaIdPessoasRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
+    '/pericias/$periciaId/procedimentos': {
+      id: '/pericias/$periciaId/procedimentos'
+      path: '/procedimentos'
+      fullPath: '/pericias/$periciaId/procedimentos'
+      preLoaderRoute: typeof PericiasPericiaIdProcedimentosRouteImport
+      parentRoute: typeof PericiasPericiaIdRoute
+    }
   }
 }
+
+interface PericiasPericiaIdRouteChildren {
+  PericiasPericiaIdColetaRoute: typeof PericiasPericiaIdColetaRoute
+  PericiasPericiaIdFontesRoute: typeof PericiasPericiaIdFontesRoute
+  PericiasPericiaIdLaudoRoute: typeof PericiasPericiaIdLaudoRoute
+  PericiasPericiaIdPessoasRoute: typeof PericiasPericiaIdPessoasRoute
+  PericiasPericiaIdProcedimentosRoute: typeof PericiasPericiaIdProcedimentosRoute
+  PericiasPericiaIdIndexRoute: typeof PericiasPericiaIdIndexRoute
+}
+
+const PericiasPericiaIdRouteChildren: PericiasPericiaIdRouteChildren = {
+  PericiasPericiaIdColetaRoute: PericiasPericiaIdColetaRoute,
+  PericiasPericiaIdFontesRoute: PericiasPericiaIdFontesRoute,
+  PericiasPericiaIdLaudoRoute: PericiasPericiaIdLaudoRoute,
+  PericiasPericiaIdPessoasRoute: PericiasPericiaIdPessoasRoute,
+  PericiasPericiaIdProcedimentosRoute: PericiasPericiaIdProcedimentosRoute,
+  PericiasPericiaIdIndexRoute: PericiasPericiaIdIndexRoute,
+}
+
+const PericiasPericiaIdRouteWithChildren =
+  PericiasPericiaIdRoute._addFileChildren(PericiasPericiaIdRouteChildren)
+
+interface PericiasRouteChildren {
+  PericiasPericiaIdRoute: typeof PericiasPericiaIdRouteWithChildren
+}
+
+const PericiasRouteChildren: PericiasRouteChildren = {
+  PericiasPericiaIdRoute: PericiasPericiaIdRouteWithChildren,
+}
+
+const PericiasRouteWithChildren = PericiasRoute._addFileChildren(
+  PericiasRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConvitesRoute: ConvitesRoute,
   NovaPericiaRoute: NovaPericiaRoute,
   PerfilRoute: PerfilRoute,
-  PericiasRoute: PericiasRoute,
+  PericiasRoute: PericiasRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
