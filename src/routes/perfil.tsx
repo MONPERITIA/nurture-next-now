@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { User, Briefcase, BadgeCheck, Map, Mail, Phone, PenTool, FileStack } from "lucide-react";
+import { User, Briefcase, PenTool, FileStack, Settings } from "lucide-react";
 
 export const Route = createFileRoute("/perfil")({
   component: Perfil,
@@ -14,7 +14,7 @@ function Perfil() {
         </div>
         <div className="flex flex-col">
           <h1 className="text-2xl font-semibold">Perfil Profissional</h1>
-          <p className="text-pergaminho-300 text-sm">Visualize e edite seus dados de cadastro.</p>
+          <p className="text-pergaminho-300 text-sm">Seus dados profissionais e configurações da conta.</p>
         </div>
       </header>
 
@@ -22,12 +22,12 @@ function Perfil() {
         <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 space-y-4">
           <h2 className="text-lg font-medium flex items-center gap-2 border-b border-tinta-600 pb-2 mb-4">
             <User className="w-4 h-4 text-indigo-400" />
-            Dados Pessoais
+            Dados profissionais
           </h2>
           
           <div className="space-y-4 text-sm">
             <div className="flex flex-col gap-1">
-              <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Nome Profissional</span>
+              <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Nome profissional</span>
               <p className="text-pergaminho-100 font-medium">—</p>
             </div>
             <div className="flex flex-col gap-1">
@@ -35,7 +35,7 @@ function Perfil() {
               <p className="text-pergaminho-100 font-medium">—</p>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Telefone (Opcional)</span>
+              <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Telefone (opcional)</span>
               <p className="text-pergaminho-100 font-medium">—</p>
             </div>
           </div>
@@ -54,17 +54,17 @@ function Perfil() {
                 <p className="text-pergaminho-100 font-medium">—</p>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Conselho</span>
+                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Conselho (quando aplicável)</span>
                 <p className="text-pergaminho-100 font-medium">—</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-1">
-                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">UF</span>
+                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">UF (quando aplicável)</span>
                 <p className="text-pergaminho-100 font-medium">—</p>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Registro</span>
+                <span className="text-pergaminho-500 uppercase text-[10px] font-bold tracking-wider">Número de registro (quando aplicável)</span>
                 <p className="text-pergaminho-100 font-medium">—</p>
               </div>
             </div>
@@ -84,11 +84,21 @@ function Perfil() {
         <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 space-y-4">
           <h2 className="text-lg font-medium flex items-center gap-2 border-b border-tinta-600 pb-2 mb-4">
             <FileStack className="w-4 h-4 text-indigo-400" />
-            Modelos Particulares
+            Modelos particulares
           </h2>
           <div className="flex flex-col items-center justify-center py-4 gap-2">
             <FileStack className="w-8 h-8 text-tinta-600" />
             <p className="text-xs text-pergaminho-500">Nenhum modelo cadastrado</p>
+          </div>
+        </section>
+
+        <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 space-y-4">
+          <h2 className="text-lg font-medium flex items-center gap-2 border-b border-tinta-600 pb-2 mb-4">
+            <Settings className="w-4 h-4 text-indigo-400" />
+            Preferências básicas da conta
+          </h2>
+          <div className="py-4">
+            <p className="text-xs text-pergaminho-500">Nenhuma preferência configurada.</p>
           </div>
         </section>
       </div>
