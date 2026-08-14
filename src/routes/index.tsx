@@ -20,7 +20,7 @@ function Index() {
         {/* Branding */}
         <div className="space-y-2 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground font-serif">
-            MONPERIT IA
+            MONPERIT <span className="text-brass">IA</span>
           </h1>
           <div className="h-0.5 w-12 bg-brass mx-auto opacity-80" />
         </div>
