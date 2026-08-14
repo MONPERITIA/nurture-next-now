@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, FileText, History, Layout, Settings } from "lucide-react";
+import { Download, FileText, History, Layout, CheckCircle2, Files, Search } from "lucide-react";
 
 export const Route = createFileRoute("/pericias/$periciaId/laudo")({
   component: PericiaLaudo,
@@ -9,7 +9,7 @@ function PericiaLaudo() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Laudo Pericial</h2>
+        <h2 className="text-xl font-semibold">Laudo</h2>
         <div className="flex gap-2">
           <button className="flex items-center gap-2 px-4 py-2 bg-tinta-700 border border-tinta-600 text-pergaminho-500 rounded-lg text-sm font-semibold cursor-not-allowed opacity-50">
             <Download className="w-4 h-4" />
@@ -31,11 +31,14 @@ function PericiaLaudo() {
         {/* Side Panel (Conceptual) */}
         <div className="w-full lg:w-72 space-y-4">
            <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-4 space-y-4">
-              <h3 className="text-xs uppercase font-bold tracking-wider text-pergaminho-500">Opções do Laudo</h3>
+              <h3 className="text-xs uppercase font-bold tracking-wider text-pergaminho-500">Estrutura do Laudo</h3>
               <div className="space-y-2">
-                 <SideAction icon={<Layout className="w-4 h-4" />} label="Modelos" />
-                 <SideAction icon={<History className="w-4 h-4" />} label="Versões" />
-                 <SideAction icon={<Settings className="w-4 h-4" />} label="Configurações" />
+                 <SideAction icon={<Layout className="w-4 h-4" />} label="Montagem" disabled />
+                 <SideAction icon={<FileText className="w-4 h-4" />} label="Propostas" disabled />
+                 <SideAction icon={<CheckCircle2 className="w-4 h-4" />} label="Confirmações" disabled />
+                 <SideAction icon={<Files className="w-4 h-4" />} label="Origem" disabled />
+                 <SideAction icon={<Search className="w-4 h-4" />} label="Revisão" disabled />
+                 <SideAction icon={<History className="w-4 h-4" />} label="Versões" disabled />
               </div>
            </section>
 
@@ -50,9 +53,12 @@ function PericiaLaudo() {
   );
 }
 
-function SideAction({ icon, label }: { icon: React.ReactNode; label: string }) {
+function SideAction({ icon, label, disabled }: { icon: React.ReactNode; label: string; disabled?: boolean }) {
   return (
-    <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-pergaminho-300 hover:bg-tinta-700 rounded transition-colors">
+    <button 
+      disabled={disabled}
+      className={`w-full flex items-center gap-3 px-3 py-2 text-sm text-pergaminho-300 transition-colors rounded ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:bg-tinta-700'}`}
+    >
       {icon}
       {label}
     </button>

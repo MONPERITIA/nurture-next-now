@@ -34,7 +34,7 @@ function PericiaVisaoGeral() {
             <h3 className="text-xs uppercase font-bold tracking-wider text-pergaminho-500">Status</h3>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-pergaminho-500" />
-              <span className="text-pergaminho-100">Preparação</span>
+              <span className="text-pergaminho-100">Status não definido</span>
             </div>
           </section>
         </div>

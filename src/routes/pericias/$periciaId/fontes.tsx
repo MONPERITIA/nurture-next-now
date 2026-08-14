@@ -22,6 +22,14 @@ function PericiaFontes() {
         </div>
       </div>
 
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 opacity-50">
+        <FonteCard label="Autos e documentos" />
+        <FonteCard label="OCR" />
+        <FonteCard label="Códigos F" />
+        <FonteCard label="Quesitos" />
+        <FonteCard label="Revisão" />
+      </div>
+      
       <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-12 flex flex-col items-center justify-center text-center gap-4">
         <div className="w-12 h-12 rounded-full bg-tinta-700 flex items-center justify-center">
           <Files className="w-6 h-6 text-pergaminho-500" />
@@ -33,6 +41,17 @@ function PericiaFontes() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function FonteCard({ label }: { label: string }) {
+  return (
+    <div className="bg-tinta-800 border border-tinta-600 p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+      <div className="w-8 h-8 rounded bg-tinta-700 flex items-center justify-center">
+        <Files className="w-4 h-4 text-pergaminho-500" />
+      </div>
+      <span className="text-[10px] font-bold text-pergaminho-500 uppercase tracking-wider">{label}</span>
     </div>
   );
 }
