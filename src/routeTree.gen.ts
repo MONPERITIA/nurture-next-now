@@ -14,6 +14,7 @@ import { Route as ConvitesRouteImport } from './routes/convites'
 import { Route as NovaPericiaRouteImport } from './routes/nova-pericia'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as PericiasRouteImport } from './routes/pericias'
+import { Route as PericiasIndexRouteImport } from './routes/pericias/index'
 import { Route as PericiasPericiaIdRouteImport } from './routes/pericias/$periciaId'
 import { Route as PericiasPericiaIdIndexRouteImport } from './routes/pericias/$periciaId/index'
 import { Route as PericiasPericiaIdColetaRouteImport } from './routes/pericias/$periciaId/coleta'
@@ -46,6 +47,11 @@ const PericiasRoute = PericiasRouteImport.update({
   id: '/pericias',
   path: '/pericias',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PericiasIndexRoute = PericiasIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PericiasRoute,
 } as any)
 const PericiasPericiaIdRoute = PericiasPericiaIdRouteImport.update({
   id: '/$periciaId',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/perfil': typeof PerfilRoute
   '/pericias': typeof PericiasRouteWithChildren
   '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
+  '/pericias/': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
   '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
   '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
@@ -104,7 +111,7 @@ export interface FileRoutesByTo {
   '/convites': typeof ConvitesRoute
   '/nova-pericia': typeof NovaPericiaRoute
   '/perfil': typeof PerfilRoute
-  '/pericias': typeof PericiasRouteWithChildren
+  '/pericias': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
   '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
   '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
@@ -120,6 +127,7 @@ export interface FileRoutesById {
   '/perfil': typeof PerfilRoute
   '/pericias': typeof PericiasRouteWithChildren
   '/pericias/$periciaId': typeof PericiasPericiaIdRouteWithChildren
+  '/pericias/': typeof PericiasIndexRoute
   '/pericias/$periciaId/coleta': typeof PericiasPericiaIdColetaRoute
   '/pericias/$periciaId/fontes': typeof PericiasPericiaIdFontesRoute
   '/pericias/$periciaId/laudo': typeof PericiasPericiaIdLaudoRoute
@@ -136,6 +144,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/pericias'
     | '/pericias/$periciaId'
+    | '/pericias/'
     | '/pericias/$periciaId/coleta'
     | '/pericias/$periciaId/fontes'
     | '/pericias/$periciaId/laudo'
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/pericias'
     | '/pericias/$periciaId'
+    | '/pericias/'
     | '/pericias/$periciaId/coleta'
     | '/pericias/$periciaId/fontes'
     | '/pericias/$periciaId/laudo'
@@ -215,6 +225,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/pericias'
       preLoaderRoute: typeof PericiasRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/pericias/': {
+      id: '/pericias/'
+      path: '/'
+      fullPath: '/pericias/'
+      preLoaderRoute: typeof PericiasIndexRouteImport
+      parentRoute: typeof PericiasRoute
     }
     '/pericias/$periciaId': {
       id: '/pericias/$periciaId'
@@ -291,10 +308,12 @@ const PericiasPericiaIdRouteWithChildren =
 
 interface PericiasRouteChildren {
   PericiasPericiaIdRoute: typeof PericiasPericiaIdRouteWithChildren
+  PericiasIndexRoute: typeof PericiasIndexRoute
 }
 
 const PericiasRouteChildren: PericiasRouteChildren = {
   PericiasPericiaIdRoute: PericiasPericiaIdRouteWithChildren,
+  PericiasIndexRoute: PericiasIndexRoute,
 }
 
 const PericiasRouteWithChildren = PericiasRoute._addFileChildren(
