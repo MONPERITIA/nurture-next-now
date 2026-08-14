@@ -32,6 +32,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  
+  --color-brass: #C89B5A;
+  --color-dark-bg: #0A0F18;
 
   --font-serif: "Spectral", serif;
   --font-sans: "IBM Plex Sans", sans-serif;
@@ -51,8 +54,8 @@
   --secondary-foreground: #A8AEBC;
   --muted: #18202E;
   --muted-foreground: #A8AEBC;
-  --accent: #C89B5A;
-  --accent-foreground: #0E1420;
+  --accent: #1C2440;
+  --accent-foreground: #E8E4DA;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: #2A354A;
@@ -77,5 +80,17 @@
 
   code, pre {
     font-family: var(--font-mono);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+      transition-delay: -1ms !important;
+    }
   }
 }
