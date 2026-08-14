@@ -137,7 +137,8 @@ function RootComponent() {
     pathname === "/login" ||
     pathname === "/cadastro" ||
     pathname === "/recuperar-senha" ||
-    pathname === "/nova-senha"
+    pathname === "/nova-senha" ||
+    pathname === "/codigo-acesso"
   ) {
     return (
       <QueryClientProvider client={queryClient}>

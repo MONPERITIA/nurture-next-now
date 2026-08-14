@@ -134,12 +134,12 @@ function LoginScreen() {
 
         {/* Ações alternativas (apenas visual) */}
         <div className="flex flex-col gap-3">
-          <button
-            type="button"
-            className="w-full bg-transparent border border-tinta-600 text-pergaminho-100 font-medium py-2.5 rounded-md transition-colors hover:bg-tinta-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-tinta-950"
+          <Link
+            to="/codigo-acesso"
+            className="w-full bg-transparent border border-tinta-600 text-pergaminho-100 font-medium py-2.5 rounded-md transition-colors hover:bg-tinta-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-tinta-950 block text-center"
           >
             Receber link ou código por e-mail
-          </button>
+          </Link>
 
           <SecondaryButton icon={<GoogleIcon className="w-4 h-4" />}>
             Continuar com Google
