@@ -40,8 +40,21 @@ function Dashboard() {
             Perícias recentes
           </h2>
         </div>
-        <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-8 flex flex-col items-center justify-center text-center gap-2">
-          <p className="text-pergaminho-300 text-sm">Nenhuma perícia recente.</p>
+        <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-4 flex flex-col items-center justify-center text-center gap-4">
+          <div className="bg-tinta-900 border border-tinta-600 rounded-lg p-3 w-full flex items-center justify-between">
+            <div className="flex flex-col items-start gap-1">
+              <span className="font-mono text-[10px] text-pergaminho-500 bg-tinta-800 px-1.5 py-0.5 rounded">DEMO</span>
+              <span className="text-sm font-medium text-pergaminho-100">Exemplo de Perícia</span>
+            </div>
+            <Link 
+              to="/pericias/$periciaId" 
+              params={{ periciaId: "demo" }}
+              className="px-3 py-1.5 bg-tinta-700 text-pergaminho-100 rounded text-xs font-semibold hover:bg-tinta-600 transition-colors"
+            >
+              Abrir
+            </Link>
+          </div>
+          <p className="text-pergaminho-500 text-xs">Nenhuma outra perícia recente.</p>
         </div>
       </section>
 
