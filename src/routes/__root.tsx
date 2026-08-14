@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Home, ClipboardList, PlusSquare, Mail, User } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -131,8 +132,63 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen bg-tinta-900 text-pergaminho-100 flex flex-col md:flex-row">
+        {/* Desktop Sidebar */}
+        <nav className="hidden md:flex flex-col w-64 bg-tinta-800 border-r border-tinta-600 p-6 gap-8 fixed h-full">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xl font-serif font-semibold tracking-tight">MONPERIT <span className="text-latao-400">IA</span></span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <NavLink to="/" icon={<Home className="w-5 h-5" />} label="Início" />
+            <NavLink to="/pericias" icon={<ClipboardList className="w-5 h-5" />} label="Perícias" />
+            <NavLink to="/nova-pericia" icon={<PlusSquare className="w-5 h-5" />} label="Nova Perícia" />
+            <NavLink to="/convites" icon={<Mail className="w-5 h-5" />} label="Convites" />
+            <NavLink to="/perfil" icon={<User className="w-5 h-5" />} label="Perfil" />
+          </div>
+        </nav>
+
+        {/* Main Content Area */}
+        <main className="flex-1 md:ml-64 p-4 md:p-8 max-w-5xl mx-auto w-full">
+          <Outlet />
+        </main>
+
+        {/* Mobile Tab Bar */}
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-tinta-800 border-t border-tinta-600 px-2 py-3 flex items-center justify-around z-50">
+          <MobileNavLink to="/" icon={<Home className="w-6 h-6" />} label="Início" />
+          <MobileNavLink to="/pericias" icon={<ClipboardList className="w-6 h-6" />} label="Perícias" />
+          <MobileNavLink to="/nova-pericia" icon={<PlusSquare className="w-6 h-6 text-indigo-400" />} label="Nova" />
+          <MobileNavLink to="/convites" icon={<Mail className="w-6 h-6" />} label="Convites" />
+          <MobileNavLink to="/perfil" icon={<User className="w-6 h-6" />} label="Perfil" />
+        </nav>
+      </div>
     </QueryClientProvider>
+  );
+}
+
+function NavLink({ to, icon, label }: { to: string; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      to={to}
+      activeProps={{ className: "bg-indigo-900 text-indigo-300" }}
+      inactiveProps={{ className: "text-pergaminho-300 hover:bg-tinta-700 hover:text-pergaminho-100" }}
+      className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-sm font-medium"
+    >
+      {icon}
+      {label}
+    </Link>
+  );
+}
+
+function MobileNavLink({ to, icon, label }: { to: string; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      to={to}
+      activeProps={{ className: "text-indigo-400" }}
+      inactiveProps={{ className: "text-pergaminho-500" }}
+      className="flex flex-col items-center gap-1 min-w-[64px]"
+    >
+      {icon}
+      <span className="text-[10px] uppercase font-bold tracking-wider">{label}</span>
+    </Link>
   );
 }

@@ -33,8 +33,32 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   
-  --color-brass: #C89B5A;
-  --color-dark-bg: #0A0F18;
+  --color-tinta-950: #0A0F18;
+  --color-tinta-900: #0E1420;
+  --color-tinta-800: #18202E;
+  --color-tinta-700: #212B3C;
+  --color-tinta-600: #2A354A;
+  --color-tinta-500: #3A4761;
+
+  --color-pergaminho-100: #E8E4DA;
+  --color-pergaminho-300: #A8AEBC;
+  --color-pergaminho-500: #6E7688;
+
+  --color-indigo-300: #A9BAF0;
+  --color-indigo-400: #8AA0E8;
+  --color-indigo-500: #6B85DC;
+  --color-indigo-900: #1C2440;
+
+  --color-latao-300: #DBB47C;
+  --color-latao-400: #C89B5A;
+  --color-latao-900: #2A2114;
+
+  --color-sucesso: #5BA97F;
+  --color-alerta: #E0674F;
+  --color-progresso: #8AA0E8;
+
+  --color-brass: var(--color-latao-400);
+  --color-dark-bg: var(--color-tinta-950);
 
   --font-serif: "Spectral", serif;
   --font-sans: "IBM Plex Sans", sans-serif;
@@ -42,25 +66,25 @@
 }
 
 :root {
-  --background: #0E1420;
-  --foreground: #E8E4DA;
-  --card: #18202E;
-  --card-foreground: #E8E4DA;
-  --popover: #18202E;
-  --popover-foreground: #E8E4DA;
-  --primary: #8AA0E8;
-  --primary-foreground: #0E1420;
-  --secondary: #2A354A;
-  --secondary-foreground: #A8AEBC;
-  --muted: #18202E;
-  --muted-foreground: #A8AEBC;
-  --accent: #1C2440;
-  --accent-foreground: #E8E4DA;
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: #2A354A;
-  --input: #2A354A;
-  --ring: #8AA0E8;
+  --background: var(--color-tinta-900);
+  --foreground: var(--color-pergaminho-100);
+  --card: var(--color-tinta-800);
+  --card-foreground: var(--color-pergaminho-100);
+  --popover: var(--color-tinta-800);
+  --popover-foreground: var(--color-pergaminho-100);
+  --primary: var(--color-indigo-400);
+  --primary-foreground: var(--color-tinta-900);
+  --secondary: var(--color-tinta-600);
+  --secondary-foreground: var(--color-pergaminho-300);
+  --muted: var(--color-tinta-800);
+  --muted-foreground: var(--color-pergaminho-300);
+  --accent: var(--color-indigo-900);
+  --accent-foreground: var(--color-pergaminho-100);
+  --destructive: var(--color-alerta);
+  --destructive-foreground: var(--color-pergaminho-100);
+  --border: var(--color-tinta-600);
+  --input: var(--color-tinta-600);
+  --ring: var(--color-indigo-400);
 }
 
 @layer base {
