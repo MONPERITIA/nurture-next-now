@@ -150,12 +150,12 @@ function LoginScreen() {
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-4 text-sm text-pergaminho-300">
-          <button
-            type="button"
+          <Link
+            to="/recuperar-senha"
             className="underline underline-offset-4 decoration-pergaminho-500 hover:text-pergaminho-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 rounded"
           >
             Esqueci minha senha
-          </button>
+          </Link>
           <span className="text-pergaminho-500" aria-hidden="true">
             ·
           </span>

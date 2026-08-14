@@ -132,8 +132,13 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  // /login e /cadastro são telas de acesso independentes, sem a navegação global do app.
-  if (pathname === "/login" || pathname === "/cadastro") {
+  // /login, /cadastro, /recuperar-senha e /nova-senha são telas de acesso independentes, sem a navegação global do app.
+  if (
+    pathname === "/login" ||
+    pathname === "/cadastro" ||
+    pathname === "/recuperar-senha" ||
+    pathname === "/nova-senha"
+  ) {
     return (
       <QueryClientProvider client={queryClient}>
         <Outlet />
