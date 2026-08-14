@@ -148,14 +148,23 @@ function LoginScreen() {
           </SecondaryButton>
         </div>
 
-        <p className="mt-6 text-center text-sm text-pergaminho-300">
+        <div className="mt-6 flex items-center justify-center gap-4 text-sm text-pergaminho-300">
           <button
             type="button"
             className="underline underline-offset-4 decoration-pergaminho-500 hover:text-pergaminho-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 rounded"
           >
             Esqueci minha senha
           </button>
-        </p>
+          <span className="text-pergaminho-500" aria-hidden="true">
+            ·
+          </span>
+          <Link
+            to="/cadastro"
+            className="underline underline-offset-4 decoration-pergaminho-500 hover:text-pergaminho-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 rounded"
+          >
+            Criar conta
+          </Link>
+        </div>
       </div>
     </div>
   );
