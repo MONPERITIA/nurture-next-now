@@ -1,11 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Search, Filter } from "lucide-react";
 
 export const Route = createFileRoute("/pericias")({
-  component: Pericias,
+  component: PericiasLayout,
 });
 
-function Pericias() {
+function PericiasLayout() {
+  return <Outlet />;
+}
+
+export function PericiasList() {
   return (
     <div className="flex flex-col gap-6 pb-24 md:pb-6">
       <header className="flex flex-col gap-1">
@@ -45,3 +49,4 @@ function Pericias() {
     </div>
   );
 }
+
