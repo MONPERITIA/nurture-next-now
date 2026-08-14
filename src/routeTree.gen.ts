@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as ConvitesRouteImport } from './routes/convites'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NovaPericiaRouteImport } from './routes/nova-pericia'
@@ -27,6 +28,11 @@ import { Route as PericiasPericiaIdProcedimentosRouteImport } from './routes/per
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConvitesRoute = ConvitesRouteImport.update({
@@ -99,6 +105,7 @@ const PericiasPericiaIdProcedimentosRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
@@ -130,6 +138,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
   '/convites': typeof ConvitesRoute
   '/login': typeof LoginRoute
   '/nova-pericia': typeof NovaPericiaRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cadastro'
     | '/convites'
     | '/login'
     | '/nova-pericia'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cadastro'
     | '/convites'
     | '/login'
     | '/nova-pericia'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cadastro'
     | '/convites'
     | '/login'
     | '/nova-pericia'
@@ -195,6 +207,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CadastroRoute: typeof CadastroRoute
   ConvitesRoute: typeof ConvitesRoute
   LoginRoute: typeof LoginRoute
   NovaPericiaRoute: typeof NovaPericiaRoute
@@ -209,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/convites': {
@@ -342,6 +362,7 @@ const PericiasRouteWithChildren = PericiasRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CadastroRoute: CadastroRoute,
   ConvitesRoute: ConvitesRoute,
   LoginRoute: LoginRoute,
   NovaPericiaRoute: NovaPericiaRoute,
