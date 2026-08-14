@@ -27,30 +27,20 @@ function Pericias() {
         </button>
       </div>
 
-      <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-6 flex flex-col items-center justify-center text-center gap-4">
-        <div className="bg-tinta-900 border border-tinta-600 rounded-lg p-4 w-full flex items-center justify-between group hover:border-indigo-500/50 transition-colors">
-          <div className="flex flex-col items-start gap-1">
-            <span className="font-mono text-xs text-pergaminho-500 bg-tinta-800 px-2 py-0.5 rounded">DEMO-2026</span>
-            <span className="font-medium text-pergaminho-100">Exemplo de Perícia</span>
-          </div>
-          <Link 
-            to="/pericias/$periciaId" 
-            params={{ periciaId: "demo" }}
-            className="px-4 py-2 bg-indigo-500 text-tinta-900 rounded-lg text-sm font-semibold hover:bg-indigo-400 transition-colors"
-          >
-            Abrir
-          </Link>
+      <div className="bg-tinta-800 border border-tinta-600 rounded-lg p-12 flex flex-col items-center justify-center text-center gap-4">
+        <div className="w-16 h-16 rounded-full bg-tinta-900 flex items-center justify-center mb-2">
+          <Search className="w-8 h-8 text-pergaminho-500/50" />
         </div>
-
-        <div className="pt-8 flex flex-col items-center gap-4 opacity-40">
-          <div className="w-12 h-12 rounded-full bg-tinta-700 flex items-center justify-center">
-            <Search className="w-6 h-6 text-pergaminho-500" />
-          </div>
-          <div className="space-y-1">
-            <p className="font-medium text-pergaminho-100">Outras perícias não encontradas</p>
-            <p className="text-sm text-pergaminho-300">Comece criando uma nova perícia no botão principal.</p>
-          </div>
+        <div className="space-y-2">
+          <p className="font-medium text-pergaminho-100 text-lg">Nenhuma perícia encontrada.</p>
+          <p className="text-pergaminho-400">Crie uma nova perícia para começar.</p>
         </div>
+        <Link 
+          to="/nova-pericia"
+          className="mt-4 px-6 py-2.5 bg-indigo-500 text-tinta-900 rounded-lg text-sm font-semibold hover:bg-indigo-400 transition-colors"
+        >
+          Nova perícia
+        </Link>
       </div>
     </div>
   );
