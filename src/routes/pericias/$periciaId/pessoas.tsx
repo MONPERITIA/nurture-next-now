@@ -93,7 +93,7 @@ function PericiaPessoas() {
               <label className="text-xs font-bold text-pergaminho-500 uppercase tracking-wider">Documentos</label>
               <input 
                 type="text" 
-                placeholder="CPF, RG, CNH ou outros"
+                placeholder="Informe os documentos desta pessoa"
                 className="w-full h-10 bg-tinta-900 border border-tinta-600 rounded-lg px-3 text-pergaminho-100 placeholder:text-tinta-500 focus:border-indigo-400 focus:outline-none transition-colors"
               />
             </div>
