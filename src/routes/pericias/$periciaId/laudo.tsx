@@ -137,7 +137,7 @@ function PericiaLaudo() {
           {/* 8. FINALIZAÇÃO */}
           <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
             <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-brass-500" />
+              <ShieldCheck className="w-3.5 h-3.5 text-latao-400" />
               <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Finalização</h3>
             </div>
             <div className="p-4 space-y-4">
@@ -147,7 +147,7 @@ function PericiaLaudo() {
               
               <button 
                 disabled 
-                className="w-full py-2 bg-brass-600/20 border border-brass-600/30 text-brass-500 rounded text-sm font-semibold opacity-50 cursor-not-allowed uppercase tracking-wider transition-all"
+                className="w-full py-2 bg-latao-900/20 border border-latao-400/30 text-latao-400 rounded text-sm font-semibold opacity-50 cursor-not-allowed uppercase tracking-wider transition-all"
               >
                 Finalizar versão
               </button>
