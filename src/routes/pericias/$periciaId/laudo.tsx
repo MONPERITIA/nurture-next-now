@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, FileText, History, Layout, CheckCircle2, Files, Search } from "lucide-react";
+import { Download, FileText, History, Layout, CheckCircle2, Files, Search, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/pericias/$periciaId/laudo")({
   component: PericiaLaudo,
@@ -7,60 +7,160 @@ export const Route = createFileRoute("/pericias/$periciaId/laudo")({
 
 function PericiaLaudo() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Laudo</h2>
+    <div className="space-y-6 max-w-7xl mx-auto">
+      {/* 1. CABEÇALHO */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h2 className="text-xl font-serif text-pergaminho-100">Laudo</h2>
         <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-tinta-700 border border-tinta-600 text-pergaminho-500 rounded-lg text-sm font-semibold cursor-not-allowed opacity-50">
+          <button 
+            disabled 
+            className="flex items-center gap-2 px-4 py-2 bg-tinta-700 border border-tinta-600 text-pergaminho-300 rounded-lg text-sm font-semibold opacity-50 cursor-not-allowed"
+          >
             <Download className="w-4 h-4" />
-            Exportar
+            Exportar DOCX
+          </button>
+          <button 
+            disabled 
+            className="flex items-center gap-2 px-4 py-2 bg-tinta-700 border border-tinta-600 text-pergaminho-300 rounded-lg text-sm font-semibold opacity-50 cursor-not-allowed"
+          >
+            <Download className="w-4 h-4" />
+            Exportar PDF
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Document Editor Area (Conceptual) */}
-        <div className="flex-1 bg-tinta-800 border border-tinta-600 rounded-lg min-h-[600px] p-12 flex flex-col items-center justify-center text-center gap-4">
-           <FileText className="w-12 h-12 text-tinta-700" />
-           <div className="space-y-1">
-              <p className="text-pergaminho-300">Aguardando preenchimento da perícia...</p>
-              <p className="text-xs text-pergaminho-500 italic">O laudo será estruturado a partir das coletas e análises.</p>
-           </div>
-        </div>
-
-        {/* Side Panel (Conceptual) */}
-        <div className="w-full lg:w-72 space-y-4">
-           <section className="bg-tinta-800 border border-tinta-600 rounded-lg p-4 space-y-4">
-              <h3 className="text-xs uppercase font-bold tracking-wider text-pergaminho-500">Estrutura do Laudo</h3>
-              <div className="space-y-2">
-                 <SideAction icon={<Layout className="w-4 h-4" />} label="Montagem" disabled />
-                 <SideAction icon={<FileText className="w-4 h-4" />} label="Propostas" disabled />
-                 <SideAction icon={<CheckCircle2 className="w-4 h-4" />} label="Confirmações" disabled />
-                 <SideAction icon={<Files className="w-4 h-4" />} label="Origem" disabled />
-                 <SideAction icon={<Search className="w-4 h-4" />} label="Revisão" disabled />
-                 <SideAction icon={<History className="w-4 h-4" />} label="Versões" disabled />
+      {/* 2. ÁREA DO DOCUMENTO (Desktop: Documento esquerda, Origem direita) */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr,320px] gap-6">
+        <div className="space-y-6">
+          {/* Documento */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg min-h-[500px] flex flex-col">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Documento</h3>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-center p-8 text-center gap-3">
+              <FileText className="w-10 h-10 text-tinta-700" />
+              <div className="space-y-1">
+                <p className="text-pergaminho-300 font-sans">Nenhum conteúdo montado.</p>
+                <p className="text-xs text-pergaminho-500 italic font-sans">O documento será estruturado a partir do material confirmado da perícia.</p>
               </div>
-           </section>
+            </div>
+          </section>
 
-           <div className="p-4 border border-tinta-600 rounded-lg bg-tinta-950/50">
-              <p className="text-[10px] text-pergaminho-500 leading-tight">
-                 Finalização requer <span className="text-pergaminho-300">assinatura visual cadastrada</span> no perfil.
+          {/* 3. MONTAGEM */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <Layout className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Montagem</h3>
+            </div>
+            <div className="p-6 flex items-center justify-center min-h-[100px]">
+              <p className="text-sm text-pergaminho-500 font-sans">Nenhum bloco montado.</p>
+            </div>
+          </section>
+
+          {/* 4. PROPOSTAS */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <FileText className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Propostas</h3>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center justify-center min-h-[60px]">
+                <p className="text-sm text-pergaminho-500 font-sans">Nenhuma proposta disponível.</p>
+              </div>
+              <p className="text-[10px] text-pergaminho-500 leading-relaxed font-sans text-center lg:text-left">
+                Análises, pareceres, conclusões e opiniões técnicas permanecem como proposta até confirmação profissional.
               </p>
-           </div>
+            </div>
+          </section>
+
+          {/* 5. CONFIRMAÇÕES */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <CheckCircle2 className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Confirmações</h3>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center justify-center min-h-[60px]">
+                <p className="text-sm text-pergaminho-500 font-sans">Nenhuma confirmação disponível.</p>
+              </div>
+              <p className="text-[10px] text-pergaminho-500 leading-relaxed font-sans text-center lg:text-left">
+                O documento não poderá ser finalizado enquanto existir bloco obrigatório de análise sem confirmação.
+              </p>
+            </div>
+          </section>
+
+          {/* 6. REVISÃO */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <Search className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Revisão</h3>
+            </div>
+            <div className="p-6 flex items-center justify-center min-h-[100px]">
+              <p className="text-sm text-pergaminho-500 font-sans">Nenhum conteúdo disponível para revisão.</p>
+            </div>
+          </section>
+
+          {/* 9. RASTREABILIDADE (Observação Discreta) */}
+          <div className="px-2">
+            <p className="text-[10px] text-pergaminho-500 italic font-sans">
+              Cada trecho deverá manter vínculo com sua origem para conferência profissional.
+            </p>
+          </div>
         </div>
+
+        <aside className="space-y-6">
+          {/* Origem */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg flex flex-col min-h-[300px]">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <Files className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Origem</h3>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-center p-6 text-center gap-2">
+              <p className="text-sm text-pergaminho-300 font-sans">Nenhuma origem disponível.</p>
+              <p className="text-[10px] text-pergaminho-500 leading-snug font-sans">
+                As origens dos trechos aparecerão aqui para conferência.
+              </p>
+            </div>
+          </section>
+
+          {/* 7. VERSÕES */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <History className="w-3.5 h-3.5 text-pergaminho-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Versões</h3>
+            </div>
+            <div className="p-4 flex items-center justify-center min-h-[80px]">
+              <p className="text-sm text-pergaminho-500 font-sans">Nenhuma versão criada.</p>
+            </div>
+          </section>
+
+          {/* 8. FINALIZAÇÃO */}
+          <section className="bg-tinta-800 border border-tinta-600 rounded-lg overflow-hidden">
+            <div className="px-4 py-2 border-b border-tinta-600 bg-tinta-900/30 flex items-center gap-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-brass-500" />
+              <h3 className="text-xs font-bold uppercase tracking-widest text-pergaminho-500 font-sans">Finalização</h3>
+            </div>
+            <div className="p-4 space-y-4">
+              <div className="text-center py-2">
+                <p className="text-sm text-pergaminho-300 font-sans">Finalização indisponível nesta etapa.</p>
+              </div>
+              
+              <button 
+                disabled 
+                className="w-full py-2 bg-brass-600/20 border border-brass-600/30 text-brass-500 rounded text-sm font-semibold opacity-50 cursor-not-allowed uppercase tracking-wider transition-all"
+              >
+                Finalizar versão
+              </button>
+
+              <div className="pt-2 border-t border-tinta-600">
+                <p className="text-[10px] text-pergaminho-500 leading-tight font-sans">
+                  A assinatura visual cadastrada, quando habilitada pelo próprio profissional, será considerada no fluxo de finalização.
+                </p>
+              </div>
+            </div>
+          </section>
+        </aside>
       </div>
     </div>
-  );
-}
-
-function SideAction({ icon, label, disabled }: { icon: React.ReactNode; label: string; disabled?: boolean }) {
-  return (
-    <button 
-      disabled={disabled}
-      className={`w-full flex items-center gap-3 px-3 py-2 text-sm text-pergaminho-300 transition-colors rounded ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:bg-tinta-700'}`}
-    >
-      {icon}
-      {label}
-    </button>
   );
 }
