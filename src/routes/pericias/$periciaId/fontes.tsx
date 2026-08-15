@@ -17,7 +17,7 @@ function PericiaFontes() {
           <button
             onClick={() => {
               const el = document.getElementById("area-autos");
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              if (el) el.scrollIntoView({ block: "start" });
             }}
             className="flex items-center gap-2 px-4 py-2 bg-tinta-700 border border-tinta-600 text-pergaminho-100 rounded-lg text-sm font-semibold hover:bg-tinta-600 transition-colors"
           >
