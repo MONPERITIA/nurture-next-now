@@ -10,9 +10,9 @@ function PericiaColeta() {
     <div className="space-y-8 animate-in fade-in duration-500">
       {/* 1. CABEÇALHO */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-serif text-pergaminho-50">Coleta em campo</h2>
+        <h2 className="text-2xl font-serif text-pergaminho-100">Coleta em campo</h2>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 text-pergaminho-400 bg-tinta-900/50 px-4 py-2 rounded-md border border-tinta-700">
+          <div className="flex items-center gap-2 text-pergaminho-300 bg-tinta-900/50 px-4 py-2 rounded-md border border-tinta-700">
              <Timer className="w-4 h-4" />
              <span className="font-mono text-lg tracking-wider" aria-label="Cronômetro">00:00:00</span>
           </div>
@@ -95,18 +95,18 @@ function PericiaColeta() {
               <ShieldCheck className="w-4 h-4" />
               <h4 className="font-semibold text-sm tracking-tight">Privacidade da coleta</h4>
             </div>
-            <p className="text-xs text-pergaminho-400 leading-relaxed">
+            <p className="text-xs text-pergaminho-300 leading-relaxed">
               “Gravações, transcrições integrais e anotações pessoais permanecem privadas por padrão.”
             </p>
           </section>
 
           {/* 6. OPERAÇÃO OFFLINE */}
           <section className="bg-tinta-800/30 border border-tinta-700 rounded-[6px] p-5 space-y-3">
-            <div className="flex items-center gap-2 text-pergaminho-400">
+            <div className="flex items-center gap-2 text-pergaminho-300">
               <WifiOff className="w-4 h-4" />
               <h4 className="font-semibold text-sm tracking-tight">Uso em campo</h4>
             </div>
-            <p className="text-xs text-pergaminho-400 leading-relaxed">
+            <p className="text-xs text-pergaminho-300 leading-relaxed">
               “A operação offline e a sincronização serão habilitadas e validadas em etapa funcional posterior.”
             </p>
           </section>
@@ -133,7 +133,7 @@ function ColetaButton({ icon, label }: { icon: React.ReactNode; label: string })
       <div className="text-indigo-400/70">
         {icon}
       </div>
-      <span className="text-xs font-medium text-pergaminho-200 tracking-tight leading-tight">{label}</span>
+      <span className="text-xs font-medium text-pergaminho-300 tracking-tight leading-tight">{label}</span>
     </button>
   );
 }
