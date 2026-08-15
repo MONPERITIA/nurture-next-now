@@ -56,7 +56,7 @@ function PericiaPessoas() {
               <label className="text-xs font-bold text-pergaminho-500 uppercase tracking-wider">Papel</label>
               <input 
                 type="text" 
-                placeholder="Ex: Periciado, Assistente, Testemunha"
+                placeholder="Informe o papel desta pessoa na perícia"
                 className="w-full h-10 bg-tinta-900 border border-tinta-600 rounded-lg px-3 text-pergaminho-100 placeholder:text-tinta-500 focus:border-indigo-400 focus:outline-none transition-colors"
               />
             </div>
